@@ -1,0 +1,152 @@
+INCLUDE options/options.makejail
+
+ARG teleirc_irc_host_ip=0
+ARG teleirc_irc_server=chat.freenode.net
+ARG teleirc_irc_server_password=0
+ARG teleirc_irc_port=6697
+ARG teleirc_irc_use_ssl=true
+ARG teleirc_irc_cert_allow_expired=false
+ARG teleirc_irc_cert_allow_selfsigned=false
+ARG teleirc_irc_channel=#channel
+ARG teleirc_irc_channel_key=0
+ARG teleirc_irc_blacklist=0
+ARG teleirc_irc_bot_name=tg-bridge-bot
+ARG teleirc_irc_bot_realname=Powered by TeleIRC <github.com/RITlug/teleirc>
+ARG teleirc_irc_bot_ident=teleirc
+ARG teleirc_irc_nickserv_service=NickServ
+ARG teleirc_irc_nickserv_user=0
+ARG teleirc_irc_nickserv_pass=0
+ARG teleirc_irc_prefix=<
+ARG teleirc_irc_suffix=>
+ARG teleirc_irc_send_sticker_emoji=true
+ARG teleirc_irc_send_document=false
+ARG teleirc_irc_edited_prefix=(edited) 
+ARG teleirc_irc_max_message_length=400
+ARG teleirc_irc_show_zwsp=true
+ARG teleirc_irc_show_location_message=false
+ARG teleirc_irc_no_forward_prefix=0
+ARG teleirc_irc_quit_message=TeleIRC bridge stopped.
+ARG teleirc_telegram_chat_id=-0000000000000
+ARG teleirc_teleirc_token=000000000:AAAAAAaAAa2AaAAaoAAAA-a_aaAAaAaaaAA
+ARG teleirc_max_messages_per_minute=20
+ARG teleirc_telegram_message_reply_prefix=[
+ARG teleirc_telegram_message_reply_suffix=]
+ARG teleirc_telegram_message_reply_length=15
+ARG teleirc_show_topic_message=true
+ARG teleirc_show_action_message=true
+ARG teleirc_show_join_message=false
+ARG teleirc_join_message_allow_list=0
+ARG teleirc_show_kick_message=true
+ARG teleirc_show_nick_message=false
+ARG teleirc_show_leave_message=false
+ARG teleirc_leave_message_allow_list=0
+ARG teleirc_show_disconnect_message=true
+ARG teleirc_imgur_client_id=7d6b00b87043f58
+ARG teleirc_imgur_client_secret=0
+ARG teleirc_imgur_refresh_token=0
+ARG teleirc_imgur_album_hash=0
+
+PKG teleirc
+SYSRC teleirc_enable=YES
+
+COPY files/teleirc.conf /usr/local/etc
+
+VAR teleirc_conf=/usr/local/etc/teleirc.conf
+
+RAW if [ "${teleirc_irc_host_ip}" = 0 ]; then
+RAW 	teleirc_irc_host_ip=
+RAW fi
+
+RAW if [ "${teleirc_irc_server_password}" = 0 ]; then
+RAW 	teleirc_irc_server_password=
+RAW fi
+
+RAW if [ "${teleirc_irc_channel_key}" = 0 ]; then
+RAW 	teleirc_irc_channel_key=
+RAW fi
+
+RAW if [ "${teleirc_irc_blacklist}" = 0 ]; then
+RAW 	teleirc_irc_blacklist=
+RAW fi
+
+RAW if [ "${teleirc_irc_nickserv_user}" = 0 ]; then
+RAW 	teleirc_irc_nickserv_user=
+RAW fi
+
+RAW if [ "${teleirc_irc_nickserv_pass}" = 0 ]; then
+RAW 	teleirc_irc_nickserv_pass=
+RAW fi
+
+RAW if [ "${teleirc_irc_no_forward_prefix}" = 0 ]; then
+RAW 	teleirc_irc_no_forward_prefix=
+RAW fi
+
+RAW if [ "${teleirc_join_message_allow_list}" = 0 ]; then
+RAW 	teleirc_join_message_allow_list=
+RAW fi
+
+RAW if [ "${teleirc_leave_message_allow_list}" = 0 ]; then
+RAW 	teleirc_leave_message_allow_list=
+RAW fi
+
+RAW if [ "${teleirc_imgur_client_secret}" = 0 ]; then
+RAW 	teleirc_imgur_client_secret=
+RAW fi
+
+RAW if [ "${teleirc_imgur_refresh_token}" = 0 ]; then
+RAW 	teleirc_imgur_refresh_token=
+RAW fi
+
+RAW if [ "${teleirc_imgur_album_hash}" = 0 ]; then
+RAW 	teleirc_imgur_album_hash=
+RAW fi
+
+REPLACE ${teleirc_conf} IRC_HOST_IP "\"${teleirc_irc_host_ip}\""
+REPLACE ${teleirc_conf} IRC_SERVER "${teleirc_irc_server}"
+REPLACE ${teleirc_conf} IRC_SERVER_PASSWORD "\"${teleirc_irc_server_password}\""
+REPLACE ${teleirc_conf} IRC_PORT "${teleirc_irc_port}"
+REPLACE ${teleirc_conf} IRC_USE_SSL "${teleirc_irc_use_ssl}"
+REPLACE ${teleirc_conf} IRC_CERT_ALLOW_EXPIRED "${teleirc_irc_cert_allow_expired}"
+REPLACE ${teleirc_conf} IRC_CERT_ALLOW_SELFSIGNED "${teleirc_irc_cert_allow_selfsigned}"
+REPLACE ${teleirc_conf} IRC_CHANNEL "\"${teleirc_irc_channel}\""
+REPLACE ${teleirc_conf} IRC_CHANNEL_KEY "\"${teleirc_irc_channel_key}\""
+REPLACE ${teleirc_conf} IRC_BLACKLIST "\"${teleirc_irc_blacklist}\""
+REPLACE ${teleirc_conf} IRC_BOT_NAME "${teleirc_irc_bot_name}"
+REPLACE ${teleirc_conf} IRC_BOT_REALNAME "\"${teleirc_irc_bot_realname}\""
+REPLACE ${teleirc_conf} IRC_BOT_IDENT "\"${teleirc_irc_bot_ident}\""
+REPLACE ${teleirc_conf} IRC_NICKSERV_SERVICE "${teleirc_irc_nickserv_service}"
+REPLACE ${teleirc_conf} IRC_NICKSERV_USER "\"${teleirc_irc_nickserv_user}\""
+REPLACE ${teleirc_conf} IRC_NICKSERV_PASS "\"${teleirc_irc_nickserv_pass}\""
+REPLACE ${teleirc_conf} IRC_PREFIX "\"${teleirc_irc_prefix}\""
+REPLACE ${teleirc_conf} IRC_SUFFIX "\"${teleirc_irc_suffix}\""
+REPLACE ${teleirc_conf} IRC_SEND_STICKER_EMOJI "${teleirc_irc_send_sticker_emoji}"
+REPLACE ${teleirc_conf} IRC_SEND_DOCUMENT "${teleirc_irc_send_document}"
+REPLACE ${teleirc_conf} IRC_EDITED_PREFIX "\"${teleirc_irc_edited_prefix}\""
+REPLACE ${teleirc_conf} IRC_MAX_MESSAGE_LENGTH "${teleirc_irc_max_message_length}"
+REPLACE ${teleirc_conf} IRC_SHOW_ZWSP "${teleirc_irc_show_zwsp}"
+REPLACE ${teleirc_conf} IRC_SHOW_LOCATION_MESSAGE "${teleirc_irc_show_location_message}"
+REPLACE ${teleirc_conf} IRC_NO_FORWARD_PREFIX "\"${teleirc_irc_no_forward_prefix}\""
+REPLACE ${teleirc_conf} IRC_QUIT_MESSAGE "\"${teleirc_irc_quit_message}\""
+REPLACE ${teleirc_conf} TELEGRAM_CHAT_ID "${teleirc_telegram_chat_id}"
+REPLACE ${teleirc_conf} TELEIRC_TOKEN "${teleirc_teleirc_token}"
+REPLACE ${teleirc_conf} MAX_MESSAGES_PER_MINUTE "${teleirc_max_messages_per_minute}"
+REPLACE ${teleirc_conf} TELEGRAM_MESSAGE_REPLY_PREFIX "\"${teleirc_telegram_message_reply_prefix}\""
+REPLACE ${teleirc_conf} TELEGRAM_MESSAGE_REPLY_SUFFIX "\"${teleirc_telegram_message_reply_suffix}\""
+REPLACE ${teleirc_conf} TELEGRAM_MESSAGE_REPLY_LENGTH "${teleirc_telegram_message_reply_length}"
+REPLACE ${teleirc_conf} SHOW_TOPIC_MESSAGE "${teleirc_show_topic_message}"
+REPLACE ${teleirc_conf} SHOW_ACTION_MESSAGE "${teleirc_show_action_message}"
+REPLACE ${teleirc_conf} SHOW_JOIN_MESSAGE "${teleirc_show_join_message}"
+REPLACE ${teleirc_conf} JOIN_MESSAGE_ALLOW_LIST "\"${teleirc_join_message_allow_list}\""
+REPLACE ${teleirc_conf} SHOW_KICK_MESSAGE "${teleirc_show_kick_message}"
+REPLACE ${teleirc_conf} SHOW_NICK_MESSAGE "${teleirc_show_nick_message}"
+REPLACE ${teleirc_conf} SHOW_LEAVE_MESSAGE "${teleirc_show_leave_message}"
+REPLACE ${teleirc_conf} LEAVE_MESSAGE_ALLOW_LIST "\"${teleirc_leave_message_allow_list}\""
+REPLACE ${teleirc_conf} SHOW_DISCONNECT_MESSAGE "${teleirc_show_disconnect_message}"
+REPLACE ${teleirc_conf} IMGUR_CLIENT_ID "${teleirc_imgur_client_id}"
+REPLACE ${teleirc_conf} IMGUR_CLIENT_SECRET "\"${teleirc_imgur_client_secret}\""
+REPLACE ${teleirc_conf} IMGUR_REFRESH_TOKEN "\"${teleirc_imgur_refresh_token}\""
+REPLACE ${teleirc_conf} IMGUR_ALBUM_HASH "\"${teleirc_imgur_album_hash}\""
+
+CMD chown teleirc:teleirc ${teleirc_conf}
+
+SERVICE teleirc start
