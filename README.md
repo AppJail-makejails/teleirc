@@ -71,19 +71,4 @@ Note that the above values are not actual values, this is for demonstration purp
 
 ### Arguments
 
-This Makejail uses the following pattern to configure teleirc: `--teleirc_<parameter>` where `<parameter>` is a parameter described in `https://docs.teleirc.com/en/latest/user/config-file-glossary/`. Although, there are some parameters that have a default value with a special meaning:
-
-* `teleirc_irc_host_ip`
-* `teleirc_irc_server_password`
-* `teleirc_irc_channel_key`
-* `teleirc_irc_blacklist`
-* `teleirc_irc_nickserv_user`
-* `teleirc_irc_nickserv_pass`
-* `teleirc_irc_no_forward_prefix`
-* `teleirc_join_message_allow_list`
-* `teleirc_leave_message_allow_list`
-* `teleirc_imgur_client_secret`
-* `teleirc_imgur_refresh_token`
-* `teleirc_imgur_album_hash`
-
-All of the above parameters have the value `0`, so in the resulting configuration, these parameters will have an empty value.
+This Makejail uses the following pattern to configure teleirc: `--teleirc_<parameter>` where `<parameter>` is a parameter described in `https://docs.teleirc.com/en/latest/user/config-file-glossary/`.

@@ -1,21 +1,21 @@
 INCLUDE options/options.makejail
 
-ARG teleirc_irc_host_ip=0
+ARG teleirc_irc_host_ip?
 ARG teleirc_irc_server=chat.freenode.net
-ARG teleirc_irc_server_password=0
+ARG teleirc_irc_server_password?
 ARG teleirc_irc_port=6697
 ARG teleirc_irc_use_ssl=true
 ARG teleirc_irc_cert_allow_expired=false
 ARG teleirc_irc_cert_allow_selfsigned=false
 ARG teleirc_irc_channel=#channel
-ARG teleirc_irc_channel_key=0
-ARG teleirc_irc_blacklist=0
+ARG teleirc_irc_channel_key?
+ARG teleirc_irc_blacklist?
 ARG teleirc_irc_bot_name=tg-bridge-bot
 ARG teleirc_irc_bot_realname=Powered by TeleIRC <github.com/RITlug/teleirc>
 ARG teleirc_irc_bot_ident=teleirc
 ARG teleirc_irc_nickserv_service=NickServ
-ARG teleirc_irc_nickserv_user=0
-ARG teleirc_irc_nickserv_pass=0
+ARG teleirc_irc_nickserv_user?
+ARG teleirc_irc_nickserv_pass?
 ARG teleirc_irc_prefix=<
 ARG teleirc_irc_suffix=>
 ARG teleirc_irc_send_sticker_emoji=true
@@ -24,7 +24,7 @@ ARG teleirc_irc_edited_prefix=(edited)
 ARG teleirc_irc_max_message_length=400
 ARG teleirc_irc_show_zwsp=true
 ARG teleirc_irc_show_location_message=false
-ARG teleirc_irc_no_forward_prefix=0
+ARG teleirc_irc_no_forward_prefix?
 ARG teleirc_irc_quit_message=TeleIRC bridge stopped.
 ARG teleirc_telegram_chat_id=-0000000000000
 ARG teleirc_teleirc_token=000000000:AAAAAAaAAa2AaAAaoAAAA-a_aaAAaAaaaAA
@@ -35,16 +35,16 @@ ARG teleirc_telegram_message_reply_length=15
 ARG teleirc_show_topic_message=true
 ARG teleirc_show_action_message=true
 ARG teleirc_show_join_message=false
-ARG teleirc_join_message_allow_list=0
+ARG teleirc_join_message_allow_list?
 ARG teleirc_show_kick_message=true
 ARG teleirc_show_nick_message=false
 ARG teleirc_show_leave_message=false
-ARG teleirc_leave_message_allow_list=0
+ARG teleirc_leave_message_allow_list?
 ARG teleirc_show_disconnect_message=true
 ARG teleirc_imgur_client_id=7d6b00b87043f58
-ARG teleirc_imgur_client_secret=0
-ARG teleirc_imgur_refresh_token=0
-ARG teleirc_imgur_album_hash=0
+ARG teleirc_imgur_client_secret?
+ARG teleirc_imgur_refresh_token?
+ARG teleirc_imgur_album_hash?
 
 PKG teleirc
 SYSRC teleirc_enable=YES
@@ -52,54 +52,6 @@ SYSRC teleirc_enable=YES
 COPY files/teleirc.conf /usr/local/etc
 
 VAR teleirc_conf=/usr/local/etc/teleirc.conf
-
-RAW if [ "${teleirc_irc_host_ip}" = 0 ]; then
-RAW 	teleirc_irc_host_ip=
-RAW fi
-
-RAW if [ "${teleirc_irc_server_password}" = 0 ]; then
-RAW 	teleirc_irc_server_password=
-RAW fi
-
-RAW if [ "${teleirc_irc_channel_key}" = 0 ]; then
-RAW 	teleirc_irc_channel_key=
-RAW fi
-
-RAW if [ "${teleirc_irc_blacklist}" = 0 ]; then
-RAW 	teleirc_irc_blacklist=
-RAW fi
-
-RAW if [ "${teleirc_irc_nickserv_user}" = 0 ]; then
-RAW 	teleirc_irc_nickserv_user=
-RAW fi
-
-RAW if [ "${teleirc_irc_nickserv_pass}" = 0 ]; then
-RAW 	teleirc_irc_nickserv_pass=
-RAW fi
-
-RAW if [ "${teleirc_irc_no_forward_prefix}" = 0 ]; then
-RAW 	teleirc_irc_no_forward_prefix=
-RAW fi
-
-RAW if [ "${teleirc_join_message_allow_list}" = 0 ]; then
-RAW 	teleirc_join_message_allow_list=
-RAW fi
-
-RAW if [ "${teleirc_leave_message_allow_list}" = 0 ]; then
-RAW 	teleirc_leave_message_allow_list=
-RAW fi
-
-RAW if [ "${teleirc_imgur_client_secret}" = 0 ]; then
-RAW 	teleirc_imgur_client_secret=
-RAW fi
-
-RAW if [ "${teleirc_imgur_refresh_token}" = 0 ]; then
-RAW 	teleirc_imgur_refresh_token=
-RAW fi
-
-RAW if [ "${teleirc_imgur_album_hash}" = 0 ]; then
-RAW 	teleirc_imgur_album_hash=
-RAW fi
 
 REPLACE ${teleirc_conf} IRC_HOST_IP "\"${teleirc_irc_host_ip}\""
 REPLACE ${teleirc_conf} IRC_SERVER "${teleirc_irc_server}"
