@@ -42,4 +42,40 @@ Note that the above values are not actual values, this is for demonstration purp
 
 ### Arguments
 
-This Makejail uses the following pattern to configure teleirc: `--teleirc_<parameter>` where `<parameter>` is a parameter described in `https://docs.teleirc.com/en/latest/user/config-file-glossary/`.
+* `teleirc_tag` (default: `latest`): see [#tags](#tags).
+* This Makejail uses the following pattern to configure teleirc: `--teleirc_<parameter>` where `<parameter>` is a parameter described in `https://docs.teleirc.com/en/latest/user/config-file-glossary/`.
+
+## How to build the Image
+
+Make any changes you want to your image.
+
+```
+INCLUDE options/network.makejail
+INCLUDE gh+AppJail-makejails/teleirc --file build.makejail
+
+SYSRC teleirc_enable=YES
+```
+
+Build the jail:
+
+```sh
+appjail makejail -j teleirc
+```
+
+Remove unportable or unnecessary files and directories and export the jail:
+
+```sh
+appjail stop teleirc
+appjail cmd local teleirc sh -c "rm -f var/log/*"
+appjail cmd local teleirc sh -c "rm -f var/cache/pkg/*"
+appjail cmd local teleirc sh -c "rm -f var/run/*"
+appjail cmd local teleirc vi etc/rc.conf
+appjail image export teleirc
+```
+
+## Tags
+
+| Tag    | Arch    | Version           | Type   |
+| ------ | ------- | ----------------- | ------ |
+| `13.2` | `amd64` | `13.2-RELEASE-p1` | `thin` |
+| `13.1` | `amd64` | `13.1-RELEASE-p8` | `thin` |

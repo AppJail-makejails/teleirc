@@ -1,5 +1,6 @@
 INCLUDE options/options.makejail
 
+# TeleIRC configuration
 ARG teleirc_irc_host_ip?
 ARG teleirc_irc_server=chat.freenode.net
 ARG teleirc_irc_server_password?
@@ -46,8 +47,10 @@ ARG teleirc_imgur_client_secret?
 ARG teleirc_imgur_refresh_token?
 ARG teleirc_imgur_album_hash?
 
-PKG teleirc
-SYSRC teleirc_enable=YES
+# TeleIRC image tag
+ARG teleirc_tag=latest
+
+FROM --entrypoint gh+AppJail-makejails/teleirc teleirc:${teleirc_tag}
 
 COPY files/teleirc.conf /usr/local/etc
 
