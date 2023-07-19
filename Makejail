@@ -104,4 +104,5 @@ REPLACE ${teleirc_conf} IMGUR_ALBUM_HASH "\"${teleirc_imgur_album_hash}\""
 
 CMD chown teleirc:teleirc ${teleirc_conf}
 
+SYSRC teleirc_enable=YES
 SERVICE teleirc start

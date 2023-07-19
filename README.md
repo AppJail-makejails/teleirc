@@ -52,8 +52,6 @@ Make any changes you want to your image.
 ```
 INCLUDE options/network.makejail
 INCLUDE gh+AppJail-makejails/teleirc --file build.makejail
-
-SYSRC teleirc_enable=YES
 ```
 
 Build the jail:
