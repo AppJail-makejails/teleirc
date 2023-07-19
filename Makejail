@@ -51,7 +51,7 @@ SYSRC teleirc_enable=YES
 
 COPY files/teleirc.conf /usr/local/etc
 
-VAR teleirc_conf=/usr/local/etc/teleirc.conf
+VAR --make-arg-env teleirc_conf=/usr/local/etc/teleirc.conf
 
 REPLACE ${teleirc_conf} IRC_HOST_IP "\"${teleirc_irc_host_ip}\""
 REPLACE ${teleirc_conf} IRC_SERVER "${teleirc_irc_server}"
