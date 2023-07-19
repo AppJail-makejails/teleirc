@@ -1,0 +1,17 @@
+tags: 13.1
+13.1.arch: amd64
+13.1.name: "teleirc"
+13.1.timestamp.amd64: 1689790742
+13.1.sum.amd64: a3b195ad97bf6d4c9d2366c8b71d4fa61595d36b5c31ae40d80bf5ebe5b90aa4
+13.1.size.amd64: 19121764
+13.1.source.amd64: https://dtxdf.duckdns.org/d4c1cd36za/teleirc_13_1_amd64_image_appjail
+13.1.source.amd64+: https://anonget.onrender.com/d4c1cd36za/teleirc_13_1_amd64_image_appjail
+
+tags+: 13.2
+13.2.arch: amd64
+13.2.name: "teleirc"
+13.2.timestamp.amd64: 1689790748
+13.2.sum.amd64: 8637b5f813c102fba51e2d66730d8e4e0476cb10ec503173e5a4013a0229d86d
+13.2.size.amd64: 19139128
+13.2.source.amd64: https://dtxdf.duckdns.org/b7cacd31z2/teleirc_13_2_amd64_image_appjail
+13.2.source.amd64+: https://anonget.onrender.com/b7cacd31z2/teleirc_13_2_amd64_image_appjail
