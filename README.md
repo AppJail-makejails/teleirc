@@ -10,9 +10,6 @@ teleirc.com
 
 ```
 INCLUDE options/network.makejail
-
-COPY usr
-
 INCLUDE gh+AppJail-makejails/teleirc
 ```
 
@@ -24,32 +21,6 @@ ARG interface=teleirc
 
 OPTION virtualnet=${network}:${interface} default
 OPTION nat
-```
-
-The tree structure of the `usr/` directory is as follows:
-
-```
-# tree -pug usr/
-[drwxr-xr-x root     wheel   ]  usr/
-└── [drwxr-xr-x root     wheel   ]  local
-    └── [drwxr-xr-x root     wheel   ]  etc
-        └── [drwxr-xr-x root     wheel   ]  pkg
-            └── [drwxr-xr-x root     wheel   ]  repos
-                └── [-rw-r--r-- root     wheel   ]  FreeBSD.conf
-
-5 directories, 1 file
-```
-
-Where `FreeBSD.conf` is a configuration file for `pkg(8)` to use the `latest` branch since teleirc is not yet compiled on the `quarterly` branch:
-
-```
-FreeBSD: {
-  url: "pkg+http://pkg.FreeBSD.org/${ABI}/latest",
-  mirror_type: "srv",
-  signature_type: "fingerprints",
-  fingerprints: "/usr/share/keys/pkg",
-  enabled: yes
-}
 ```
 
 Open a shell and run `appjail makejail`:
