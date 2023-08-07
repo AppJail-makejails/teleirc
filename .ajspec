@@ -1,17 +1,9 @@
-tags: 13.1
-13.1.arch: amd64
-13.1.name: "teleirc"
-13.1.timestamp.amd64: 1689793283
-13.1.sum.amd64: aa8475b83d655d782b6b016942a785424ccf81e48ac2d0a31b370ce6bb755d9e
-13.1.size.amd64: 18885032
-13.1.source.amd64: https://dtxdf.duckdns.org/A811c93dz2/teleirc_13_1_amd64_image_appjail
-13.1.source.amd64+: https://anonget.onrender.com/A811c93dz2/teleirc_13_1_amd64_image_appjail
-
-tags+: 13.2
+tags: 13.2
 13.2.arch: amd64
 13.2.name: "teleirc"
-13.2.timestamp.amd64: 1689793287
-13.2.sum.amd64: dd6b0ef4773beb75064cc0a59c9dbba551a0e074a52bb5f04bf8a02d4ab1dc99
-13.2.size.amd64: 18908288
-13.2.source.amd64: https://dtxdf.duckdns.org/6f1bce33z2/teleirc_13_2_amd64_image_appjail
-13.2.source.amd64+: https://anonget.onrender.com/6f1bce33z2/teleirc_13_2_amd64_image_appjail
+13.2.timestamp.amd64: 1691176517
+13.2.sum.amd64: 216be90f9922be0a9116453f5dbc10bafeb0e70b5a7e14f28591a7f520f2299a
+13.2.size.amd64: 19183824
+13.2.source.amd64: https://dtxdf.duckdns.org/yaVdO16cz7/teleirc_13_2_amd64_image_appjail
+13.2.source.amd64+: https://storm-bsd.duckdns.org/yaVdO16cz7/teleirc_13_2_amd64_image_appjail
+13.2.source.amd64+: https://anonget.onrender.com/yaVdO16cz7/teleirc_13_2_amd64_image_appjail
