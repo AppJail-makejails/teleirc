@@ -1,7 +1,7 @@
 tags: 13.2
 13.2.arch: amd64
 13.2.name: "teleirc"
-13.2.timestamp.amd64: 1693690726
-13.2.sum.amd64: d76697f9638761cac87158310fa7af113583894d80f27c4c254faf6c6bfafaaa
-13.2.size.amd64: 19183092
+13.2.timestamp.amd64: 1694734344
+13.2.sum.amd64: 4b38916bff136825c5ae1dd9ca6d867a26b9e8bab51aca2a48188280078148c0
+13.2.size.amd64: 18879756
 13.2.source.amd64: "http://appjail.hpc.at/teleirc/13.2-amd64-image.appjail"
