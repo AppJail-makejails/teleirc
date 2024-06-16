@@ -9,33 +9,20 @@ teleirc.com
 ## How to use this Makejail
 
 ```
-INCLUDE options/network.makejail
-INCLUDE gh+AppJail-makejails/teleirc
-```
-
-Where `options/network.makejail` are the options that suit your environment, for example:
-
-```
-ARG network
-ARG interface=teleirc
-
-OPTION virtualnet=${network}:${interface} default
-OPTION nat
-```
-
-Open a shell and run `appjail makejail`:
-
-```
-appjail makejail -j teleirc -- \
-	--network testing \
-	--teleirc_irc_server irc.libera.chat \
-	--teleirc_irc_channel '#channel' \
-	--teleirc_irc_bot_realname 'Telegram bridge' \
-	--teleirc_irc_edited_prefix '(edited) ' \
-	--teleirc_irc_quit_message 'TeleIRC bridge stopped.' \
-	--teleirc_telegram_chat_id '-0000000000000' \
-	--teleirc_teleirc_token '000000000:AAAAAAaAAa2AaAAaoAAAA-a_aaAAaAaaaAA' \
-	--teleirc_imgur_client_id '7d6b00b87043f58'
+appjail makejail \
+    -j teleirc \
+    -f gh+AppJail-makejails/teleirc \
+    -o virtualnet=":<random> default" \
+    -o nat \
+    -- \
+        --teleirc_irc_server irc.libera.chat \
+        --teleirc_irc_channel '#channel' \
+        --teleirc_irc_bot_realname 'Telegram bridge' \
+        --teleirc_irc_edited_prefix '(edited) ' \
+        --teleirc_irc_quit_message 'TeleIRC bridge stopped.' \
+        --teleirc_telegram_chat_id '-0000000000000' \
+        --teleirc_teleirc_token '000000000:AAAAAAaAAa2AaAAaoAAAA-a_aaAAaAaaaAA' \
+        --teleirc_imgur_client_id '7d6b00b87043f58'
 ```
 
 Note that the above values are not actual values, this is for demonstration purposes only, use the correct values for your environment.
