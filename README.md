@@ -29,12 +29,12 @@ Note that the above values are not actual values, this is for demonstration purp
 
 ### Arguments
 
-* `teleirc_tag` (default: `13.3`): see [#tags](#tags).
+* `teleirc_tag` (default: `13.4`): see [#tags](#tags).
 * This Makejail uses the following pattern to configure teleirc: `--teleirc_<parameter>` where `<parameter>` is a parameter described in `https://docs.teleirc.com/en/latest/user/config-file-glossary/`.
 
 ## Tags
 
 | Tag    | Arch    | Version        | Type   |
 | ------ | ------- | -------------- | ------ |
-| `13.3` | `amd64` | `13.3-RELEASE` | `thin` |
+| `13.4` | `amd64` | `13.4-RELEASE` | `thin` |
 | `14.1` | `amd64` | `14.1-RELEASE` | `thin` |

@@ -48,7 +48,7 @@ ARG teleirc_imgur_refresh_token?
 ARG teleirc_imgur_album_hash?
 
 # TeleIRC image tag
-ARG teleirc_tag=13.3
+ARG teleirc_tag=13.4
 
 FROM --entrypoint gh+AppJail-makejails/teleirc teleirc:${teleirc_tag}
 
