@@ -51,7 +51,7 @@ ARG teleirc_imgur_refresh_token?
 ARG teleirc_imgur_album_hash?
 
 # TeleIRC image tag
-ARG teleirc_tag=13.4
+ARG teleirc_tag=13.5
 
 FROM --entrypoint "${teleirc_ajspec}" teleirc:${teleirc_tag}
 
