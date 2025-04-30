@@ -1,16 +1,17 @@
 tags+: 13.5
 13.5.arch: amd64
 13.5.name: "teleirc"
-13.5.timestamp.amd64: 1742232102
-13.5.sum.amd64: c630746a3b7f60e0d4eb1d1ac1a86756bd8400043ef316eb608055e116513b5f
-13.5.size.amd64: 33328845
-13.5.source.amd64: "http://appjail.hpc.at/teleirc/13.5-amd64-image.appjail"
-13.5.source.amd64+: "https://images.all101bsd.download/teleirc/13.5-amd64-image.appjail"
+13.5.timestamp.amd64: 1746018534
+13.5.sum.amd64: bf7b01ca9f8eb9fb63007c43fec0e88ce27d08913d2d6e699319f2ad165706f8
+13.5.size.amd64: 33197761
+13.5.source.amd64: "https://images.all101bsd.download/teleirc/13.5-amd64-image.appjail"
+13.5.source.amd64+: "http://appjail.hpc.at/teleirc/13.5-amd64-image.appjail"
 tags+: 14.2
 14.2.arch: amd64
 14.2.name: "teleirc"
-14.2.timestamp.amd64: 1742232225
-14.2.sum.amd64: f7904723e4163f65e75c33f369c49ed8aff4db1c7978bac5615a9bddb6877248
-14.2.size.amd64: 32760545
-14.2.source.amd64: "http://appjail.hpc.at/teleirc/14.2-amd64-image.appjail"
-14.2.source.amd64+: "https://images.all101bsd.download/teleirc/14.2-amd64-image.appjail"
+14.2.timestamp.amd64: 1746018574
+14.2.sum.amd64: 94078e2f50937246d4f0663e70db9b8298698eb012befa18d606990cb09e4837
+14.2.size.amd64: 32858605
+14.2.source.amd64: "https://images.all101bsd.download/teleirc/14.2-amd64-image.appjail"
+14.2.source.amd64+: "http://appjail.hpc.at/teleirc/14.2-amd64-image.appjail"
+maintenance: "This image is uploading, please wait a moment and try again. If you are importing this image using a Makejail that has the '--<name>_ajspec' argument, you can use the 'reproduce' method to use 'appjail-reproduce'. See 'appjail-image(5)' for details."
