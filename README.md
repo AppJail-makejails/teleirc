@@ -1,41 +1,54 @@
 # TeleIRC
 
-Go implementation of a Telegram &lt;=> IRC bridge for use with any IRC channel and Telegram group.
+TeleIRC is a Go implementation of a Telegram <=> IRC bridge. TeleIRC works with any IRC channel and Telegram group. It bridges messages between a Telegram group and an IRC channel.
 
 teleirc.com
 
-<img src="https://github.com/RITlug/teleirc/blob/main/assets/svg/horizontal_color.svg?raw=true" alt="teleirc logo" width="60%" height="auto">
+<img src="https://github.com/RITlug/teleirc/raw/main/assets/svg/horizontal_color.svg?raw=true" width="30%" height="auto" alt="TeleIRC logo">
 
 ## How to use this Makejail
 
-```
-appjail makejail \
-    -j teleirc \
-    -f gh+AppJail-makejails/teleirc \
+```console
+$ appjail oci run -Pd \
+    -o overwrite=force \
     -o virtualnet=":<random> default" \
     -o nat \
-    -- \
-        --teleirc_irc_server irc.libera.chat \
-        --teleirc_irc_channel '#channel' \
-        --teleirc_irc_bot_realname 'Telegram bridge' \
-        --teleirc_irc_edited_prefix '(edited) ' \
-        --teleirc_irc_quit_message 'TeleIRC bridge stopped.' \
-        --teleirc_telegram_chat_id '-0000000000000' \
-        --teleirc_teleirc_token '000000000:AAAAAAaAAa2AaAAaoAAAA-a_aaAAaAaaaAA' \
-        --teleirc_imgur_client_id '7d6b00b87043f58'
+    -e TELEIRC_IRC_SERVER="irc.libera.chat" \
+    -e TELEIRC_IRC_CHANNEL="#channel" \
+    -e TELEIRC_IRC_BOT_REALNAME="Telegram bridge" \
+    -e TELEIRC_IRC_EDITED_PREFIX="(edited) " \
+    -e TELEIRC_IRC_QUIT_MESSAGE="TeleIRC bridge stopped." \
+    -e TELEIRC_TELEGRAM_CHAT_ID="-0000000000000" \
+    -e TELEIRC_TELEIRC_TOKEN="000000000:AAAAAAaAAa2AaAAaoAAAA-a_aaAAaAaaaAA" \
+    -e TELEIRC_IMGUR_CLIENT_ID="7d6b00b87043f58" \
+    ghcr.io/appjail-makejails/teleirc teleirc
 ```
 
 Note that the above values are not actual values, this is for demonstration purposes only, use the correct values for your environment.
 
-### Arguments
+This image uses `envsubst` and [this template](teleirc.conf) to create the configuration file used by TeleIRC. See the template for a list of all available environment variables.
 
-* `teleirc_tag` (default: `14.3`): see [#tags](#tags).
-* `teleirc_ajspec` (default: `gh+AppJail-makejails/teleirc`): Entry point where the `appjail-ajspec(5)` file is located.
-* This Makejail uses the following pattern to configure teleirc: `--teleirc_<parameter>` where `<parameter>` is a parameter described in `https://docs.teleirc.com/en/latest/user/config-file-glossary/`.
+### Arguments (stage: build)
 
-## Tags
+* `teleirc_from` (default: `ghcr.io/appjail-makejails/teleirc`): Location of OCI image. See also [OCI Configuration](#oci-configuration).
+* `teleirc_tag` (default: `latest`): OCI image tag. See also [OCI Configuration](#oci-configuration).
 
-| Tag    | Arch    | Version        | Type   |
-| ------ | ------- | -------------- | ------ |
-| `14.3` | `amd64` | `14.3-RELEASE` | `thin` |
-| `15` | `amd64` | `15` | `thin` |
+### Environment (OCI image)
+
+* `PGID` (default: `1000`): Equivalent to `PUID` but for the Process Group ID.
+* `PUID` (default: `1000`): Process User ID for the container's main process, allowing you to match the owner of files written to mounted host volumes to your host system's user. Writable volumes are changed based on this environment variable.
+
+## OCI Configuration
+
+```yaml
+build:
+  variants:
+    - tag: 15.1
+      containerfile: Containerfile
+      aliases: ["latest"]
+      default: true
+      args:
+        FREEBSD_RELEASE: "15.1"
+        NO_PKGCLEAN: "1"
+      cache_dirs: ["pkgcache0:/var/cache/pkg"]
+```
