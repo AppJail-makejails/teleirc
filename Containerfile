@@ -14,7 +14,7 @@ LABEL org.opencontainers.image.title="TeleIRC" \
 RUN set -xe; \
     \
     pkg update; \
-    pkg install -U teleirc gettext-runtime; \
+    pkg install teleirc gettext-runtime; \
     \
     if [ -z "${NO_PKGCLEAN}" ]; then \
         pkg clean -a; \
